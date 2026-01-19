@@ -6,7 +6,7 @@ This document lists all services in the AREA automation system and their require
 
 All services use the same RapidAPI key:
 ```
-517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
+Your_RapidAPI_Key_Here
 ```
 
 ## Services List
@@ -61,24 +61,24 @@ All services use the same RapidAPI key:
 To set all environment variables at once:
 
 ```bash
-export ALIEXPRESS_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export ANIME_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export IMAGE_GEN_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export NETFLIX_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export SPORT_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export TRANSLATE_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export YOUTUBE_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export INSTAGRAM_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export YAHOO_FINANCE_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export SPOTIFY_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export GAMES_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export HOROSCOPE_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export BOOKS_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export CONTACT_CRAWLER_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export VEHICLE_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export PDF_CONVERTER_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export AI_DETECTION_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
-export JOB_SEARCH_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc3979
+export ALIEXPRESS_RAPIDAPI_KEY=Your_Key_Here
+export ANIME_RAPIDAPI_KEY=Your_Key_Here
+export IMAGE_GEN_RAPIDAPI_KEY=Your_Key_Here
+export NETFLIX_RAPIDAPI_KEY=Your_Key_Here
+export SPORT_RAPIDAPI_KEY=Your_Key_Here
+export TRANSLATE_RAPIDAPI_KEY=Your_Key_Here
+export YOUTUBE_RAPIDAPI_KEY=Your_Key_Here
+export INSTAGRAM_RAPIDAPI_KEY=Your_Key_Here
+export YAHOO_FINANCE_RAPIDAPI_KEY=Your_Key_Here
+export SPOTIFY_RAPIDAPI_KEY=Your_Key_Here
+export GAMES_RAPIDAPI_KEY=Your_Key_Here
+export HOROSCOPE_RAPIDAPI_KEY=Your_Key_Here
+export BOOKS_RAPIDAPI_KEY=Your_Key_Here
+export CONTACT_CRAWLER_RAPIDAPI_KEY=Your_Key_Here
+export VEHICLE_RAPIDAPI_KEY=Your_Key_Here
+export PDF_CONVERTER_RAPIDAPI_KEY=Your_Key_Here
+export AI_DETECTION_RAPIDAPI_KEY=Your_Key_Here
+export JOB_SEARCH_RAPIDAPI_KEY=Your_Key_Here
 ```
 
 ## Service Registration
@@ -86,7 +86,7 @@ export JOB_SEARCH_RAPIDAPI_KEY=517e0af406msh86f7f80a191d928p1d4672jsn9be760fc397
 To register all services in the database:
 
 ```bash
-cd /Users/aureldsk/projects3/G-DEV-500-COT-5-2-area-1/server
+cd /path/to/server
 
 # Original services
 python3 register_aliexpress.py
