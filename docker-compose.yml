@@ -1,0 +1,109 @@
+services:
+  # ────────────────────────────────────────────────────────────────
+  # BACKEND DJANGO
+  # ────────────────────────────────────────────────────────────────
+  server:
+    build: ./server
+    container_name: area_backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./server:/app:Z
+    environment:
+      DEBUG: "1"
+      DJANGO_ALLOWED_HOSTS: "localhost,127.0.0.1,[::1]"
+      DATABASE_URL: "postgresql://postgres:PLVTveUwuoluCEXMDNORRrByMzwReBqW@yamanote.proxy.rlwy.net:24058/railway"
+      # Configuration Email (SMTP)
+      # Pour Gmail, utilisez un "Mot de passe d'application" (App Password) si la 2FA est activée
+      EMAIL_HOST: "smtp.gmail.com"
+      EMAIL_PORT: "587"
+      EMAIL_USE_TLS: "True"
+      EMAIL_HOST_USER: "contact.fortniteitems@gmail.com"
+      EMAIL_HOST_PASSWORD: "ipktgozvpedjwpsx"
+      DEFAULT_FROM_EMAIL: "contact.fortniteitems@gmail.com"
+    depends_on:
+      - db
+
+  # ────────────────────────────────────────────────────────────────
+  # HOOK ENGINE (background)
+  # ────────────────────────────────────────────────────────────────
+  hook_engine:
+    build: ./server
+    container_name: area_hook_engine
+    environment:
+      DEBUG: "1"
+      DJANGO_ALLOWED_HOSTS: "localhost,127.0.0.1,[::1]"
+      DATABASE_URL: "postgresql://postgres:PLVTveUwuoluCEXMDNORRrByMzwReBqW@yamanote.proxy.rlwy.net:24058/railway"
+      HOOK_INTERVAL: "15"
+    env_file:
+      - ./server/.env
+    volumes:
+      - ./server:/app:Z
+    depends_on:
+      - db
+    command: /bin/sh -c "python manage.py run_hooks --interval ${HOOK_INTERVAL:-15}"
+
+  # ────────────────────────────────────────────────────────────────
+  # FRONT WEB
+  # ────────────────────────────────────────────────────────────────
+  client_web:
+    build: ./web
+    container_name: area_web
+    ports:
+      - "8081:3000"
+    volumes:
+      - ./web:/app:Z
+      - /app/node_modules
+      - apk_volume:/app/public/apk
+    # En mode développement on utilise le serveur Next.js dev pour reconstruire à chaud
+    command: npm run dev
+    depends_on:
+      - server
+
+  # ────────────────────────────────────────────────────────────────
+  # SERVICE MOBILE (BUILD / DEV)
+  # ────────────────────────────────────────────────────────────────
+  client_mobile:
+    platform: linux/amd64
+    build: ./mobile
+    container_name: area_mobile
+    volumes:
+      - ./mobile:/app:Z
+      - apk_volume:/app/build/outputs
+    command: /bin/bash /app/build-apk.sh
+    depends_on:
+      - server
+
+  # ────────────────────────────────────────────────────────────────
+  # POSTGRES (DEV LOCAL)
+  # ────────────────────────────────────────────────────────────────
+  db:
+    image: postgres:15
+    container_name: area_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: area_user
+      POSTGRES_PASSWORD: area_password
+      POSTGRES_DB: area_db
+    ports:
+      # Host port changed to 5433 to avoid conflict if 5432 already in use locally
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # ────────────────────────────────────────────────────────────────
+  # ADMINER (UI pour la base)
+  # ────────────────────────────────────────────────────────────────
+  adminer:
+    image: adminer
+    container_name: area_adminer
+    restart: unless-stopped
+    ports:
+      - "8082:8080"
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
+  shared_volume:
+  apk_volume:

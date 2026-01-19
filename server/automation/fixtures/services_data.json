@@ -1,0 +1,346 @@
+[
+  {
+    "model": "automation.service",
+    "pk": "11111111-1111-1111-1111-111111111111",
+    "fields": {
+      "name": "timer",
+      "display_name": "Timer",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/2088/2088617.png",
+      "created_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "automation.service",
+    "pk": "22222222-2222-2222-2222-222222222222",
+    "fields": {
+      "name": "weather",
+      "display_name": "Weather",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/1163/1163661.png",
+      "created_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "automation.service",
+    "pk": "33333333-3333-3333-3333-333333333333",
+    "fields": {
+      "name": "github",
+      "display_name": "GitHub",
+      "icon_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+      "created_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "automation.service",
+    "pk": "44444444-4444-4444-4444-444444444444",
+    "fields": {
+      "name": "discord",
+      "display_name": "Discord",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/5968/5968756.png",
+      "created_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "automation.service",
+    "pk": "55555555-5555-5555-5555-555555555555",
+    "fields": {
+      "name": "gmail",
+      "display_name": "Gmail",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/15047/15047587.png",
+      "created_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "automation.service",
+    "pk": "f4dddaac-2a0a-49f2-b964-137ac69af086",
+    "fields": {
+      "name": "google-drive",
+      "display_name": "Google Drive",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/5968/5968523.png",
+      "created_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "automation.service",
+    "pk": "77777777-7777-7777-7777-777777777777",
+    "fields": {
+      "name": "teams",
+      "display_name": "Microsoft Teams",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/906/906349.png",
+      "created_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "automation.service",
+    "pk": "88888888-8888-8888-8888-888888888888",
+    "fields": {
+      "name": "spotify",
+      "display_name": "Spotify",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/2111/2111624.png",
+      "created_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "automation.service",
+    "pk": "99999999-9999-9999-9999-999999999999",
+    "fields": {
+      "name": "whatsapp",
+      "display_name": "WhatsApp",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/3670/3670051.png",
+      "created_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "automation.service",
+    "pk": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+    "fields": {
+      "name": "facebook",
+      "display_name": "Facebook",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/5968/5968764.png",
+      "created_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "automation.service",
+    "pk": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+    "fields": {
+      "name": "messenger",
+      "display_name": "Messenger",
+      "icon_url": "https://cdn-icons-png.flaticon.com/512/5968/5968771.png",
+      "created_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "5242609b-9096-4abb-b22f-13f69b9423cf",
+    "fields": {
+      "service": "f4dddaac-2a0a-49f2-b964-137ac69af086",
+      "name": "youtube_new_video",
+      "description": "Triggers when a new video is posted by a specific channel"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "9bded1ff-597e-42ed-805b-3e6bf0f31f43",
+    "fields": {
+      "service": "f4dddaac-2a0a-49f2-b964-137ac69af086",
+      "name": "youtube_new_like",
+      "description": "Triggers when the user likes a video"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a1111111-1111-1111-1111-111111111111",
+    "fields": {
+      "service": "11111111-1111-1111-1111-111111111111",
+      "name": "every_minute",
+      "description": "Triggers every minute"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a1111111-1111-1111-1111-111111111112",
+    "fields": {
+      "service": "11111111-1111-1111-1111-111111111111",
+      "name": "every_hour",
+      "description": "Triggers every hour"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a1111111-1111-1111-1111-111111111113",
+    "fields": {
+      "service": "11111111-1111-1111-1111-111111111111",
+      "name": "daily",
+      "description": "Triggers once a day at a specific time"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a2222222-2222-2222-2222-222222222221",
+    "fields": {
+      "service": "22222222-2222-2222-2222-222222222222",
+      "name": "temperature_above",
+      "description": "Triggers when temperature goes above a threshold"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a2222222-2222-2222-2222-222222222222",
+    "fields": {
+      "service": "22222222-2222-2222-2222-222222222222",
+      "name": "temperature_below",
+      "description": "Triggers when temperature goes below a threshold"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a2222222-2222-2222-2222-222222222223",
+    "fields": {
+      "service": "22222222-2222-2222-2222-222222222222",
+      "name": "condition_is",
+      "description": "Triggers when weather condition matches (rain, snow, clear, etc.)"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a3333333-3333-3333-3333-333333333331",
+    "fields": {
+      "service": "33333333-3333-3333-3333-333333333333",
+      "name": "new_commit",
+      "description": "Triggers when a new commit is pushed to a repository"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a3333333-3333-3333-3333-333333333332",
+    "fields": {
+      "service": "33333333-3333-3333-3333-333333333333",
+      "name": "new_pr",
+      "description": "Triggers when a new pull request is created"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a3333333-3333-3333-3333-333333333333",
+    "fields": {
+      "service": "33333333-3333-3333-3333-333333333333",
+      "name": "new_issue",
+      "description": "Triggers when a new issue is created"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a4444444-4444-4444-4444-444444444441",
+    "fields": {
+      "service": "44444444-4444-4444-4444-444444444444",
+      "name": "new_message",
+      "description": "Triggers when a new message is posted in a channel"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a4444444-4444-4444-4444-444444444442",
+    "fields": {
+      "service": "44444444-4444-4444-4444-444444444444",
+      "name": "user_joined",
+      "description": "Triggers when a user joins the server"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a5555555-5555-5555-5555-555555555551",
+    "fields": {
+      "service": "55555555-5555-5555-5555-555555555555",
+      "name": "new_email",
+      "description": "Triggers when a new email is received"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "a5555555-5555-5555-5555-555555555552",
+    "fields": {
+      "service": "55555555-5555-5555-5555-555555555555",
+      "name": "email_from",
+      "description": "Triggers when an email is received from a specific sender"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "c9eab0df-add5-4c24-b14f-d4511f8fff80",
+    "fields": {
+      "service": "f4dddaac-2a0a-49f2-b964-137ac69af086",
+      "name": "gmail_new_email",
+      "description": "Triggers when a new email is received"
+    }
+  },
+  {
+    "model": "automation.action",
+    "pk": "d66c79a6-f901-4f46-8bdc-ab63be7752fc",
+    "fields": {
+      "service": "33333333-3333-3333-3333-333333333333",
+      "name": "new_pull_request",
+      "description": "Triggers when a new pull request is created"
+    }
+  },
+  {
+    "model": "automation.reaction",
+    "pk": "ad5aba66-7a07-42fa-9830-36455821e808",
+    "fields": {
+      "service": "f4dddaac-2a0a-49f2-b964-137ac69af086",
+      "name": "gmail_send_email",
+      "description": "Send an email"
+    }
+  },
+  {
+    "model": "automation.reaction",
+    "pk": "b1111111-1111-1111-1111-111111111111",
+    "fields": {
+      "service": "11111111-1111-1111-1111-111111111111",
+      "name": "delay",
+      "description": "Wait for a specified duration before continuing"
+    }
+  },
+  {
+    "model": "automation.reaction",
+    "pk": "b2222222-2222-2222-2222-222222222221",
+    "fields": {
+      "service": "22222222-2222-2222-2222-222222222222",
+      "name": "send_alert",
+      "description": "Send a weather alert notification"
+    }
+  },
+  {
+    "model": "automation.reaction",
+    "pk": "b3333333-3333-3333-3333-333333333331",
+    "fields": {
+      "service": "33333333-3333-3333-3333-333333333333",
+      "name": "create_issue",
+      "description": "Create a new issue in a repository"
+    }
+  },
+  {
+    "model": "automation.reaction",
+    "pk": "b3333333-3333-3333-3333-333333333332",
+    "fields": {
+      "service": "33333333-3333-3333-3333-333333333333",
+      "name": "comment_pr",
+      "description": "Add a comment to a pull request"
+    }
+  },
+  {
+    "model": "automation.reaction",
+    "pk": "b4444444-4444-4444-4444-444444444441",
+    "fields": {
+      "service": "44444444-4444-4444-4444-444444444444",
+      "name": "send_message",
+      "description": "Send a message to a Discord channel"
+    }
+  },
+  {
+    "model": "automation.reaction",
+    "pk": "b4444444-4444-4444-4444-444444444442",
+    "fields": {
+      "service": "44444444-4444-4444-4444-444444444444",
+      "name": "create_channel",
+      "description": "Create a new Discord channel"
+    }
+  },
+  {
+    "model": "automation.reaction",
+    "pk": "b5555555-5555-5555-5555-555555555551",
+    "fields": {
+      "service": "55555555-5555-5555-5555-555555555555",
+      "name": "send_email",
+      "description": "Send an email via Gmail"
+    }
+  },
+  {
+    "model": "automation.reaction",
+    "pk": "b5555555-5555-5555-5555-555555555552",
+    "fields": {
+      "service": "55555555-5555-5555-5555-555555555555",
+      "name": "mark_read",
+      "description": "Mark an email as read"
+    }
+  }
+]

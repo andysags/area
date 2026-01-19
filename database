@@ -1,0 +1,7 @@
+SGBD: PostgreSQL
+Serveur: dpg-d4m8h749c44c73ftdjb0-a.oregon-postgres.render.com
+Port: 5432
+Base: areadb_wycp
+Utilisateur: areadb_wycp_user
+Mot de passe: (celui dans DATABASE_URL)
+Si Adminer ne gère pas SSL forcé, utilise plutôt psql:
