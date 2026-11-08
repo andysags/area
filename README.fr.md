@@ -120,11 +120,11 @@ flowchart LR
 - 5 Go+ d'espace disque libre pour le build Android complet (compter 15 à 20 minutes)
 - Pour une exécution hors Docker : Python 3.10+ (le projet cible Django 5.2), Node.js 20+
 
-> **Remarque :** `docker-compose.yml` construit les images `server` et `hook_engine` à partir de `./server`, mais le dépôt ne contient actuellement ni `server/Dockerfile` ni fichier de dépendances Python (`requirements.txt`). Il faut les ajouter avant que `docker-compose build` puisse construire ces deux services. Les paquets Python importés par le code sont : `Django`, `djangorestframework`, `djangorestframework-simplejwt`, `django-allauth`, `django-cors-headers`, `django-environ`, `cryptography`, `requests`, `user-agents`.
+> **Remarque :** `docker-compose.yml` est actuellement vide : il a été vidé pour retirer des identifiants qui y étaient écrits en clair. Pour lancer la stack avec Docker, il faut le recréer avec les services listés dans le tableau ci-dessus, en lisant la configuration depuis `server/.env` plutôt qu'en dur. Le dépôt ne contient pas non plus `server/Dockerfile` ni fichier de dépendances Python (`requirements.txt`), nécessaires aux images `server` et `hook_engine`. En attendant, utilisez [Lancer sans Docker](#lancer-sans-docker). Les paquets Python importés par le code sont : `Django`, `djangorestframework`, `djangorestframework-simplejwt`, `django-allauth`, `django-cors-headers`, `django-environ`, `cryptography`, `requests`, `user-agents`.
 
 ### Configuration
 
-Le serveur lit ses variables d'environnement depuis `server/.env` (via `django-environ`) ; ce fichier est ignoré par git et également chargé par le conteneur `hook_engine`. Aucun `.env.example` n'est fourni : créez le fichier vous-même.
+Le serveur lit ses variables d'environnement depuis `server/.env` (via `django-environ`) ; ce fichier est ignoré par git. Aucun `.env.example` n'est fourni : créez le fichier vous-même.
 
 **Serveur (`server/.env`)**
 
@@ -139,7 +139,7 @@ Le serveur lit ses variables d'environnement depuis `server/.env` (via `django-e
 | `DISCORD_BOT_TOKEN` | Pour Discord | Jeton du bot utilisé pour lire/envoyer des messages |
 | `TELEGRAM_BOT_TOKEN` | Pour Telegram | Jeton du bot |
 | `<SERVICE>_RAPIDAPI_KEY` | Selon le service | Clés RapidAPI : `ALIEXPRESS_`, `ANIME_`, `BOOKS_`, `CONTACT_CRAWLER_`, `GAMES_`, `HOROSCOPE_`, `IMAGE_GEN_`, `INSTAGRAM_`, `JOB_SEARCH_`, `NETFLIX_`, `PDF_CONVERTER_`, `SPORT_`, `SPOTIFY_`, `TRANSLATE_`, `VEHICLE_`, `YAHOO_FINANCE_`, `YOUTUBE_`, `AI_DETECTION_` (voir `API_KEYS.md`) |
-| `HOOK_INTERVAL` | Non | Intervalle d'interrogation du moteur de hooks en secondes (`15` par défaut, utilisé par `docker-compose.yml`) |
+| `HOOK_INTERVAL` | Non | Intervalle d'interrogation du moteur de hooks en secondes (`15` par défaut, transmis à `run_hooks --interval`) |
 
 **Client web (`web/.env.local`)**
 
@@ -149,9 +149,9 @@ Le serveur lit ses variables d'environnement depuis `server/.env` (via `django-e
 | `NEXT_PUBLIC_API_BASE` | `http://localhost:8080` | URL du backend utilisée par `web/lib/api.ts` |
 | `NEXT_PUBLIC_GOOGLE_CLIENT_ID`, `NEXT_PUBLIC_GOOGLE_REDIRECT_URI` | — | OAuth Google côté client web |
 
-> `docker-compose.yml` définit actuellement `DATABASE_URL` et les identifiants SMTP directement dans les services `server` et `hook_engine`. Remplacez-les par vos propres valeurs (ou supprimez-les pour que `server/.env` soit utilisé) avant de lancer la stack.
-
 ### Lancer avec Docker
+
+Une fois `docker-compose.yml`, `server/Dockerfile` et `requirements.txt` en place (voir la remarque dans [Prérequis](#prérequis)) :
 
 ```bash
 docker-compose build
@@ -256,7 +256,7 @@ Voir `server/accounts/urls.py` et `server/automation/urls.py` pour la liste comp
 
 ```
 area/
-├── docker-compose.yml        # server, hook_engine, client_web, client_mobile, db, adminer
+├── docker-compose.yml        # actuellement vide (voir Prérequis)
 ├── server/                   # projet Django
 │   ├── area_server/          # settings, URLs racines
 │   ├── accounts/             # utilisateurs, auth JWT, sessions, comptes OAuth, 2FA

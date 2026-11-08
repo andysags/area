@@ -120,11 +120,11 @@ flowchart LR
 - 5 GB+ free disk space for the full Android build (allow 15–20 minutes)
 - For running outside Docker: Python 3.10+ (the project targets Django 5.2), Node.js 20+
 
-> **Note:** `docker-compose.yml` builds the `server` and `hook_engine` images from `./server`, but the repository does not currently include `server/Dockerfile` or a Python dependency file (`requirements.txt`). You need to add them before `docker-compose build` can build those two services. The Python packages imported by the code are: `Django`, `djangorestframework`, `djangorestframework-simplejwt`, `django-allauth`, `django-cors-headers`, `django-environ`, `cryptography`, `requests`, `user-agents`.
+> **Note:** `docker-compose.yml` is currently empty: it was cleared to remove credentials that had been committed inline. To run the stack with Docker you need to recreate it with the services listed in the table above, reading configuration from `server/.env` rather than inline values. The repository also does not include `server/Dockerfile` or a Python dependency file (`requirements.txt`), which the `server` and `hook_engine` images need. Until then, use [Run without Docker](#run-without-docker). The Python packages imported by the code are: `Django`, `djangorestframework`, `djangorestframework-simplejwt`, `django-allauth`, `django-cors-headers`, `django-environ`, `cryptography`, `requests`, `user-agents`.
 
 ### Configuration
 
-The server reads environment variables from `server/.env` (via `django-environ`); this file is git-ignored and also loaded by the `hook_engine` container. No `.env.example` is provided, so create the file yourself.
+The server reads environment variables from `server/.env` (via `django-environ`); this file is git-ignored. No `.env.example` is provided, so create the file yourself.
 
 **Server (`server/.env`)**
 
@@ -139,7 +139,7 @@ The server reads environment variables from `server/.env` (via `django-environ`)
 | `DISCORD_BOT_TOKEN` | For Discord | Bot token used to read/send messages |
 | `TELEGRAM_BOT_TOKEN` | For Telegram | Bot token |
 | `<SERVICE>_RAPIDAPI_KEY` | Per service | RapidAPI keys: `ALIEXPRESS_`, `ANIME_`, `BOOKS_`, `CONTACT_CRAWLER_`, `GAMES_`, `HOROSCOPE_`, `IMAGE_GEN_`, `INSTAGRAM_`, `JOB_SEARCH_`, `NETFLIX_`, `PDF_CONVERTER_`, `SPORT_`, `SPOTIFY_`, `TRANSLATE_`, `VEHICLE_`, `YAHOO_FINANCE_`, `YOUTUBE_`, `AI_DETECTION_` (see `API_KEYS.md`) |
-| `HOOK_INTERVAL` | No | Hook engine polling interval in seconds (default `15`, used by `docker-compose.yml`) |
+| `HOOK_INTERVAL` | No | Hook engine polling interval in seconds (default `15`, passed to `run_hooks --interval`) |
 
 **Web client (`web/.env.local`)**
 
@@ -149,9 +149,9 @@ The server reads environment variables from `server/.env` (via `django-environ`)
 | `NEXT_PUBLIC_API_BASE` | `http://localhost:8080` | Backend URL used by `web/lib/api.ts` |
 | `NEXT_PUBLIC_GOOGLE_CLIENT_ID`, `NEXT_PUBLIC_GOOGLE_REDIRECT_URI` | — | Google OAuth on the web client |
 
-> `docker-compose.yml` currently sets `DATABASE_URL` and SMTP credentials inline for the `server` and `hook_engine` services. Replace them with your own values (or remove them so `server/.env` is used) before running the stack.
-
 ### Run with Docker
+
+Once `docker-compose.yml`, `server/Dockerfile` and `requirements.txt` are in place (see the note in [Prerequisites](#prerequisites)):
 
 ```bash
 docker-compose build
@@ -256,7 +256,7 @@ See `server/accounts/urls.py` and `server/automation/urls.py` for the full list,
 
 ```
 area/
-├── docker-compose.yml        # server, hook_engine, client_web, client_mobile, db, adminer
+├── docker-compose.yml        # currently empty (see Prerequisites)
 ├── server/                   # Django project
 │   ├── area_server/          # settings, root URLs
 │   ├── accounts/             # users, JWT auth, sessions, OAuth accounts, 2FA
